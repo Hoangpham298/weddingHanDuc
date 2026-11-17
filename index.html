@@ -8,9 +8,8 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
+  <!-- Bộ font chuẩn hiện đại: Plus Jakarta Sans, Playfair Display (sang trọng) và Great Vibes (uốn ngả) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,9 +23,11 @@
 
     <div class="hero-content fade-in-up">
       <span class="hero-eyebrow">WE ARE GETTING MARRIED</span>
-      <h1 class="hero-names">
-        Hồng Đức <span class="amp">&amp;</span> Bảo Hân
-      </h1>
+     <h1 class="hero-names">
+      <span class="name-line">Hồng Đức</span>
+      <span class="hero-amp">&amp;</span>
+    <span class="name-line">Bảo Hân</span>
+    </h1>
       <div class="hero-date-pill">
         <span>CHỦ NHẬT</span>
         <span class="dot">•</span>
@@ -79,9 +80,9 @@
 
     <!-- 3. THÔNG TIN HAI GIA ĐÌNH -->
     <section class="section-block reveal">
-      <div class="section-heading">
-        <span class="section-tag">THE FAMILIES</span>
-        <h2>TRÂN TRỌNG THÔNG BÁO LỄ THÀNH HÔN</h2>
+      <div class="section-heading two-line-heading">
+        <span class="section-tag-notice">TRÂN TRỌNG THÔNG BÁO</span>
+        <h2>LỄ THÀNH HÔN</h2>
       </div>
 
       <div class="families-modern-grid">
@@ -94,7 +95,7 @@
           </div>
           <div class="family-divider"></div>
           <span class="role-label">CHÚ RỂ</span>
-          <h3 class="couple-serif-name">Đặng Hồng Đức</h3>
+          <h3 class="couple-serif-name script-couple-name">Đặng Hồng Đức</h3>
         </div>
 
         <!-- NHÀ GÁI -->
@@ -106,7 +107,7 @@
           </div>
           <div class="family-divider"></div>
           <span class="role-label">CÔ DÂU</span>
-          <h3 class="couple-serif-name">Nguyễn Bảo Hân</h3>
+          <h3 class="couple-serif-name script-couple-name">Nguyễn Bảo Hân</h3>
         </div>
       </div>
 
@@ -126,7 +127,9 @@
       <div class="section-heading">
         <span class="section-tag">SAVE THE DATE • 06.12.2026</span>
         <h2>Chương Trình Lễ &amp; Tiệc Cưới</h2>
-        <p class="lunar-subtitle">Chủ Nhật, ngày 06 tháng 12 năm 2026 (Tức ngày 28 tháng 10 năm Bính Ngọ)</p>
+        <p class="lunar-subtitle">Chủ Nhật, ngày 06 tháng 12 năm 2026
+          <br>
+         (Tức ngày 28 tháng 10 năm Bính Ngọ)</p> 
       </div>
 
       <div class="events-cards-grid">
@@ -346,24 +349,26 @@
         <p class="quote-inline">“Hạnh phúc không phải là tìm được người hoàn hảo, mà là học cách nhìn một người không hoàn hảo theo cách hoàn hảo nhất.”</p>
       </div>
 
-      <div class="bento-gallery">
-        <div class="bento-item span-2">
-          <img src="media/7.jpg" alt="Khoảnh khắc 1" />
+      <div class="bento-gallery-custom">
+        <!-- Ảnh lớn ở trên (chiếm trọn chiều ngang) -->
+        <div class="bento-big-item">
+          <img src="media/7.jpg" alt="Khoảnh khắc lớn" />
         </div>
-        <div class="bento-item">
-          <img src="media/4.jpg" alt="Khoảnh khắc 2" />
-        </div>
-        <div class="bento-item">
-          <img src="media/5.jpg" alt="Khoảnh khắc 3" />
-        </div>
-        <div class="bento-item">
-          <img src="media/6.jpg" alt="Khoảnh khắc 4" />
-        </div>
-        <div class="bento-item">
-          <img src="media/8.jpg" alt="Khoảnh khắc 5" />
-        </div>
-        <div class="bento-item span-2">
-          <img src="media/9.jpg" alt="Khoảnh khắc 6" />
+        
+        <!-- 4 ảnh nhỏ ở dưới (chia làm 2 cột) -->
+        <div class="bento-small-grid">
+          <div class="bento-small-item">
+            <img src="media/4.jpg" alt="Khoảnh khắc 2" />
+          </div>
+          <div class="bento-small-item">
+            <img src="media/5.jpg" alt="Khoảnh khắc 3" />
+          </div>
+          <div class="bento-small-item">
+            <img src="media/6.jpg" alt="Khoảnh khắc 4" />
+          </div>
+          <div class="bento-small-item">
+            <img src="media/8.jpg" alt="Khoảnh khắc 5" />
+          </div>
         </div>
       </div>
     </section>
@@ -373,7 +378,7 @@
       <div class="rsvp-gift-split">
         <!-- Cột Hộp Mừng Cưới -->
         <div class="gift-box-modern">
-          <span class="section-tag">WEDDING GIFT</span>
+          <span class="section-tag"></span>
           <h3>Hộp Mừng Cưới</h3>
           <p>
             Sự hiện diện của quý khách là niềm vinh hạnh lớn nhất đối với hai gia đình. Nếu quý khách ở xa không thể trực tiếp tham dự và muốn gửi lời chúc mừng, xin vui lòng mở mã QR bên dưới:
@@ -385,7 +390,7 @@
 
         <!-- Cột Form RSVP -->
         <div class="rsvp-box-modern">
-          <span class="section-tag">R.S.V.P</span>
+          <span class="section-tag"></span>
           <h3>Xác Nhận Tham Dự</h3>
           <p class="rsvp-hint">Vui lòng phản hồi để chúng mình đón tiếp chu đáo nhất nhé!</p>
 
