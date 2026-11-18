@@ -222,3 +222,44 @@ function createFloatingHeart() {
       heart.remove();
     }, duration * 1000);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 0. CÁ NHÂN HÓA TÊN KHÁCH MỜI TỪ URL
+    setupGuestPersonalization();
+
+    // 1. KHỞI TẠO TẤT CẢ CÁC MODULE KHI DOM ĐÃ SẴN SÀNG
+    setupUnifiedAudioPlayer();
+    startCountdown('2026-12-06T17:00:00+07:00');
+    setupScrollReveal();
+    setupQrModal();
+    setupFormRSVP();
+    
+    // 2. KHỞI CHẠY HIỆU ỨNG TRÁI TIM BAY LÊN
+    setInterval(createFloatingHeart, 400);
+});
+
+// ==========================================
+// 0. HIỂN THỊ TÊN KHÁCH MỜI THEO LINK CÁ NHÂN
+// ==========================================
+function setupGuestPersonalization() {
+  const urlParams = new URLSearchParams(window.location.search);
+  // Hỗ trợ cả tham số ?to=... hoặc ?guest=... hoặc ?name=... cho linh hoạt
+  const rawName = urlParams.get('to') || urlParams.get('guest') || urlParams.get('name');
+  
+  const guestNameEl = document.getElementById('guestName');
+  const rsvpNameInput = document.getElementById('name'); // Ô nhập tên ở form RSVP (nếu có)
+
+  if (rawName && rawName.trim() !== '') {
+    // Chuyển dấu '+' thành khoảng trắng nếu có và giải mã tiếng Việt
+    const formattedName = decodeURIComponent(rawName.replace(/\+/g, ' ')).trim();
+    
+    if (guestNameEl) {
+      guestNameEl.innerText = formattedName;
+    }
+    
+    // Tự động điền sẵn tên vào ô Họ tên ở form xác nhận tham dự bên dưới
+    if (rsvpNameInput) {
+      rsvpNameInput.value = formattedName;
+    }
+  }
+}
