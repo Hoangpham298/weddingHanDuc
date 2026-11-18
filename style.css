@@ -1227,3 +1227,25 @@ body {
     opacity: 0;
   }
 }
+@media (max-width: 768px) {
+  .editorial-duo-photos {
+    display: grid;
+    grid-template-columns: 1fr; /* Xếp thành 1 cột dọc trên điện thoại để ảnh có không gian hiển thị rộng rãi, rõ nét */
+    gap: 16px; /* Khoảng cách giữa 2 ảnh */
+    padding: 0 16px; /* Cách lề trái phải một chút cho cân đối */
+  }
+
+  .photo-frame {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: auto; /* Tự động co giãn theo tỷ lệ gốc của ảnh, giữ trọn vẹn không bị crop mất đầu/chân */
+    display: block;
+    object-fit: contain;
+  }
+}
