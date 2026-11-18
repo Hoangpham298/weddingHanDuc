@@ -174,3 +174,37 @@ function setupFormRSVP() {
     });
   });
 }
+
+  function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    
+    // Ký tự trái tim
+    heart.innerHTML = '❤️';
+    
+    // Vị trí xuất hiện ngẫu nhiên theo chiều ngang màn hình
+    heart.style.left = Math.random() * 100 + 'vw';
+    
+    // Kích thước trái tim ngẫu nhiên (từ 12px đến 24px)
+    const size = Math.random() * 12 + 12;
+    heart.style.fontSize = size + 'px';
+    
+    // Thời gian bay lên ngẫu nhiên (từ 4 giây đến 8 giây cho độ uyển chuyển)
+    const duration = Math.random() * 4 + 4;
+    heart.style.animationDuration = duration + 's';
+    
+    // Độ mờ ngẫu nhiên
+    heart.style.opacity = Math.random() * 0.6 + 0.4;
+    
+    document.body.appendChild(heart);
+    
+    // Tự động xóa sau khi bay xong để tối ưu hiệu năng
+    setTimeout(() => {
+      heart.remove();
+    }, duration * 1000);
+  }
+
+  // Tạo liên tục trái tim cứ mỗi 400 mili-giây
+  setInterval(createFloatingHeart, 400);
+
+  
