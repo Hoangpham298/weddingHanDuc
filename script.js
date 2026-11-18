@@ -150,6 +150,9 @@ function setupQrModal() {
 // ==========================================
 // 5. FORM RSVP GỬI GOOGLE APPS SCRIPT
 // ==========================================
+// ==========================================
+// 5. FORM RSVP GỬI GOOGLE APPS SCRIPT (CHỐNG LẶP & DOUBLE-CLICK)
+// ==========================================
 function setupFormRSVP() {
   const form = document.getElementById('rsvpForm');
   const btnSubmit = document.getElementById('btnSubmit');
@@ -157,12 +160,24 @@ function setupFormRSVP() {
 
   if (!form) return;
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+  // Xóa bỏ các listener cũ (nếu có) để tránh bị gắn đè
+  const newForm = form.cloneNode(true);
+  form.parentNode.replaceChild(newForm, form);
+  
+  const activeForm = document.getElementById('rsvpForm');
+  const activeBtn = document.getElementById('btnSubmit');
+  const activeStatus = document.getElementById('statusMessage');
 
-    btnSubmit.disabled = true;
-    btnSubmit.innerText = 'ĐANG GỬI...';
-    statusMsg.className = 'status-msg';
+  activeForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Chặn hành vi submit mặc định của trình duyệt
+
+    // Nếu nút đang bị khóa (đang trong quá trình gửi), không cho bấm thêm lần nữa
+    if (activeBtn.disabled) return;
+
+    activeBtn.disabled = true;
+    activeBtn.innerText = 'ĐANG GỬI...';
+    activeStatus.className = 'status-msg';
+    activeStatus.innerText = '';
 
     const payload = {
       name: document.getElementById('name').value.trim(),
@@ -181,18 +196,21 @@ function setupFormRSVP() {
       body: JSON.stringify(payload)
     })
     .then(() => {
-      statusMsg.className = 'status-msg success';
-      statusMsg.innerText = 'Cảm ơn bạn đã xác nhận và gửi lời chúc!';
-      form.reset();
+      activeStatus.className = 'status-msg success';
+      activeStatus.innerText = 'Cảm ơn bạn đã xác nhận và gửi lời chúc!';
+      activeForm.reset();
     })
     .catch(err => {
       console.error('Lỗi:', err);
-      statusMsg.className = 'status-msg error';
-      statusMsg.innerText = 'Có lỗi xảy ra, vui lòng thử lại!';
+      activeStatus.className = 'status-msg error';
+      activeStatus.innerText = 'Có lỗi xảy ra, vui lòng thử lại!';
     })
     .finally(() => {
-      btnSubmit.disabled = false;
-      btnSubmit.innerText = 'GỬI XÁC NHẬN';
+      // Mở lại nút sau 2 giây để tránh khách bấm liên tục
+      setTimeout(() => {
+        activeBtn.disabled = false;
+        activeBtn.innerText = 'GỬI XÁC NHẬN';
+      }, 2000);
     });
   });
 }
